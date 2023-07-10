@@ -64,7 +64,17 @@
                 </div>
                 @endif
                 <div class="col-12">
-                    <button class="btn btn-primary mb-3">
+                    @if ($errors->isEmpty())
+                    <div wire:loading>
+                        <img src="https://tinypesa.com/img/loader.gif"
+                             alt=""
+                             style="width: 20px;">
+                        Processing...
+                    </div>
+                    @endif
+                    <button class="btn btn-primary mb-3"
+                            wire:click="startPayment"
+                            wire:loading.attr="disabled">
                         <span class="ps-3">Pay Ksh {{ $amount }}</span>
                         <span class="fas fa-arrow-right"></span>
                     </button>
